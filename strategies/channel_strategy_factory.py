@@ -18,7 +18,8 @@ class ChannelStrategyFactory(ABC):
             FreshElectronicMusicChannelStrategy(daemon_config)
         self.rave_music_releases_manager: RaveMusicReleasesChannelStrategy = \
             RaveMusicReleasesChannelStrategy(daemon_config)
-        self.prometeo_releases_music_manager: PrometeoReleasesMusicChannelStrategy = PrometeoReleasesMusicChannelStrategy(daemon_config)
+        self.prometeo_releases_music_manager: PrometeoReleasesMusicChannelStrategy =\
+            PrometeoReleasesMusicChannelStrategy(daemon_config)
         self.rave_station_manager: RaveStationChannelStrategy = RaveStationChannelStrategy(daemon_config)
         self.music_for_you_manager: MusicForYouChannelStrategy = MusicForYouChannelStrategy(daemon_config)
 
@@ -37,7 +38,7 @@ class ChannelStrategyFactory(ABC):
         elif channel_id in self.rave_station_manager.managed_channel:
             print(f"Manager detected as RS channel manager.")
             target_strategy = self.rave_station_manager
-        elif channel_id in self.music_for_you_manager:
+        elif channel_id in self.music_for_you_manager.managed_channel:
             print(f"Manager detected as M4Y channel manager.")
             target_strategy = self.music_for_you_manager
         else:
